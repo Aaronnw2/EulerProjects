@@ -1,0 +1,9 @@
+C:\Users\Aaron\Desktop\PrjEuler6\PrjEuler6\bin\Debug\PrjEuler6.exe
+C:\Users\Aaron\Desktop\PrjEuler6\PrjEuler6\bin\Debug\PrjEuler6.pdb
+C:\Users\Aaron\Desktop\PrjEuler6\PrjEuler6\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Aaron\Desktop\PrjEuler6\PrjEuler6\obj\x86\Debug\PrjEuler6.Form1.resources
+C:\Users\Aaron\Desktop\PrjEuler6\PrjEuler6\obj\x86\Debug\PrjEuler6.Properties.Resources.resources
+C:\Users\Aaron\Desktop\PrjEuler6\PrjEuler6\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Aaron\Desktop\PrjEuler6\PrjEuler6\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Aaron\Desktop\PrjEuler6\PrjEuler6\obj\x86\Debug\PrjEuler6.exe
+C:\Users\Aaron\Desktop\PrjEuler6\PrjEuler6\obj\x86\Debug\PrjEuler6.pdb
