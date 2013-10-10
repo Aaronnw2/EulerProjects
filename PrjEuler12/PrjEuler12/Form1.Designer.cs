@@ -28,18 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtInput = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCalculate = new System.Windows.Forms.Button();
             this.lblAnswer = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtInput
             // 
-            this.textBox1.Location = new System.Drawing.Point(197, 9);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(117, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtInput.Location = new System.Drawing.Point(197, 9);
+            this.txtInput.Name = "txtInput";
+            this.txtInput.Size = new System.Drawing.Size(117, 20);
+            this.txtInput.TabIndex = 0;
+            this.txtInput.Text = "500";
             // 
             // label1
             // 
@@ -58,6 +59,7 @@
             this.btnCalculate.TabIndex = 2;
             this.btnCalculate.Text = "Calculate";
             this.btnCalculate.UseVisualStyleBackColor = true;
+            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
             // 
             // lblAnswer
             // 
@@ -75,7 +77,7 @@
             this.Controls.Add(this.lblAnswer);
             this.Controls.Add(this.btnCalculate);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtInput);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -89,7 +91,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtInput;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCalculate;
         private System.Windows.Forms.Label lblAnswer;
