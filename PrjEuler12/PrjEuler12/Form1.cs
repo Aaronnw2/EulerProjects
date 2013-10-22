@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Set_Class;
 
 namespace PrjEuler12
 {
@@ -45,8 +46,9 @@ namespace PrjEuler12
         //returns the number of unique combos of the prime decomp, which is equivelent to the number of factors a number will have
         public static int numberOfUniqueCombos(List<int> inputList)
         {
-            int combinations = 0;
-            return combinations;
+            set factorSet = new set(inputList);
+            List<set> powerSet = factorSet.PowerSet();
+            return powerSet.Count;
         }
 
         //returns a list of the unique prime decomposition of (inputNumber)
