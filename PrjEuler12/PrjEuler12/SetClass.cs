@@ -38,16 +38,9 @@ namespace Set_Class
             cardinality = elements.Count;
         }
 
-        public bool isEqual(set compareSet)
+        public override bool Equals(object o)
         {
-            if (this.cardinality != compareSet.cardinality)
-            {
-                return false;
-            }
-            for (int i = 0; i < this.elements.Count; i++)
-                if (this.elements != compareSet.elements)
-                    return false;
-            return true;
+            return false;
         }
 
         public void Add(int addNumber)
@@ -72,7 +65,7 @@ namespace Set_Class
             return cardinality;
         }
 
-        public string ToString()
+        public override string ToString()
         {
             string returnString = "{";
             if (this.cardinality == 0)
@@ -162,6 +155,11 @@ namespace Set_Class
                     return true;
             }
             return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
 
     }

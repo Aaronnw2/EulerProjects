@@ -26,6 +26,7 @@ namespace PrjEuler12
         {
             //the number of factors will be the number of unique combinations of prime factors we can make from the prime decompisition of a number
             //need a lower bound, and an upper bound on the number of primes needed, can maybe trim these down late
+            //maybe use 2000 = 2^4*5^3 so number of divisors will be (4+1)(3+1) = 20 !!THIS WILL WORK, AND BE MUCH FASTER THAN THE CURRENT METHOD!!
             int inputNumber = Convert.ToInt32(txtInput.Text);
             //the upperbound would be a number that has all prime factors, up to inputNumber / 2
             int[] primeArray = primeArrayConstructor(inputNumber / 2);
@@ -34,13 +35,46 @@ namespace PrjEuler12
             while (solutionFound == false)
             {
                 List<int> testNumberDecomp = new List<int>(primeDecomposition(testnumber, primeArray));
-                List<set> combinations = numberOfUniqueCombos(testNumberDecomp);
-                if(combinations.Count >= inputNumber)
+                int totalNumberOfFactors = 1, powerNumber = 0, i = 0, run = 1;
+                List<int> factorPowers = new List<int>();
+                while (i < testNumberDecomp.Count)
+                {
+                    if (i + run < testNumberDecomp.Count - 1)
+                    {
+                        if (testNumberDecomp[i] == testNumberDecomp[i + run])
+                            run++;
+                        else
+                        {
+                            i += run;
+                            factorPowers.Add(run);
+                            powerNumber++;
+                            run = 1;
+                        }
+                    }
+                    else
+                    {
+                        //last input
+                        run++;
+                        factorPowers.Add(run);
+                        break; 
+                    }
+                }
+                for (int j = 0; j < factorPowers.Count; j++)
+                {
+                    if (factorPowers[j] != 0)
+                    {
+                        factorPowers[j]++;
+                        totalNumberOfFactors *= factorPowers[j];
+                    }
+                }
+                totalNumberOfFactors += 2;
+                if (totalNumberOfFactors >= inputNumber)
                 {
                     lblAnswer.Text = testnumber.ToString();
                     solutionFound = true;
                 }
-                testnumber++;
+                else
+                    testnumber++;
             }
         }
 
