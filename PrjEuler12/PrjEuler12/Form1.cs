@@ -29,12 +29,13 @@ namespace PrjEuler12
             int inputNumber = Convert.ToInt32(txtInput.Text);
             //the upperbound would be a number that has all prime factors, up to inputNumber / 2
             int[] primeArray = primeArrayConstructor(inputNumber / 2);
-            int testnumber = Convert.ToInt32(Math.Pow(inputNumber, 2));
+            int testnumber = inputNumber * 2;
             bool solutionFound = false;
             while (solutionFound == false)
             {
                 List<int> testNumberDecomp = new List<int>(primeDecomposition(testnumber, primeArray));
-                if (numberOfUniqueCombos(testNumberDecomp) >= inputNumber)
+                List<set> combinations = numberOfUniqueCombos(testNumberDecomp);
+                if(combinations.Count >= inputNumber)
                 {
                     lblAnswer.Text = testnumber.ToString();
                     solutionFound = true;
@@ -44,11 +45,31 @@ namespace PrjEuler12
         }
 
         //returns the number of unique combos of the prime decomp, which is equivelent to the number of factors a number will have
-        public static int numberOfUniqueCombos(List<int> inputList)
+        public static List<set> numberOfUniqueCombos(List<int> inputList)
         {
             set factorSet = new set(inputList);
             List<set> powerSet = factorSet.PowerSet();
-            return powerSet.Count;
+            List<set> returnSet = new List<set>();
+            //take out doubles
+            for (int i = 0; i < powerSet.Count; i++)
+            {
+                bool isADouble = false;
+                for (int j = i + 1; j < powerSet.Count; j++)
+                {
+
+                    if (powerSet[i] == (powerSet[j]))
+                    {
+                        isADouble = true;
+                        break;
+                    }
+                        /*this changes powerset.count, and is turning in funny results due to sets being bumped up in index after one is removed
+                        powerSet.Remove(powerSet[j]);
+                     */
+                }
+                if (isADouble == false)
+                    returnSet.Add(powerSet[i]);
+            }
+            return returnSet;
         }
 
         //returns a list of the unique prime decomposition of (inputNumber)
