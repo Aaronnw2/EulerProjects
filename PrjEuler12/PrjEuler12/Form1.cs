@@ -67,6 +67,8 @@ namespace PrjEuler12
         }
 
         //returns the number of unique combos of the prime decomp, which is equivelent to the number of factors a number will have
+        //no longer needed
+        /*
         public static List<set> numberOfUniqueCombos(List<int> inputList)
         {
             set factorSet = new set(inputList);
@@ -84,15 +86,15 @@ namespace PrjEuler12
                         isADouble = true;
                         break;
                     }
-                        /*this changes powerset.count, and is turning in funny results due to sets being bumped up in index after one is removed
+                        this changes powerset.count, and is turning in funny results due to sets being bumped up in index after one is removed
                         powerSet.Remove(powerSet[j]);
-                     */
+                     
                 }
                 if (isADouble == false)
                     returnSet.Add(powerSet[i]);
             }
             return returnSet;
-        }
+        }*/
 
         //returns a list of the unique prime decomposition of (inputNumber)
         public static List<int> primeDecomposition(int inputNumber, int[] primeArray)

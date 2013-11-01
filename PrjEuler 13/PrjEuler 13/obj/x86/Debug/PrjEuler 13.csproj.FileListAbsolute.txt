@@ -1,0 +1,9 @@
+C:\Users\Aaron\Desktop\Programs\PrjEuler 13\PrjEuler 13\bin\Debug\PrjEuler 13.exe
+C:\Users\Aaron\Desktop\Programs\PrjEuler 13\PrjEuler 13\bin\Debug\PrjEuler 13.pdb
+C:\Users\Aaron\Desktop\Programs\PrjEuler 13\PrjEuler 13\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Aaron\Desktop\Programs\PrjEuler 13\PrjEuler 13\obj\x86\Debug\PrjEuler_13.Form1.resources
+C:\Users\Aaron\Desktop\Programs\PrjEuler 13\PrjEuler 13\obj\x86\Debug\PrjEuler_13.Properties.Resources.resources
+C:\Users\Aaron\Desktop\Programs\PrjEuler 13\PrjEuler 13\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Aaron\Desktop\Programs\PrjEuler 13\PrjEuler 13\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Aaron\Desktop\Programs\PrjEuler 13\PrjEuler 13\obj\x86\Debug\PrjEuler 13.exe
+C:\Users\Aaron\Desktop\Programs\PrjEuler 13\PrjEuler 13\obj\x86\Debug\PrjEuler 13.pdb
