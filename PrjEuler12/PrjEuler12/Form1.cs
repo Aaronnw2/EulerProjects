@@ -29,7 +29,7 @@ namespace PrjEuler12
             //maybe use 2000 = 2^4*5^3 so number of divisors will be (4+1)(3+1) = 20 !!THIS WILL WORK, AND BE MUCH FASTER THAN THE CURRENT METHOD!!
             int inputNumber = Convert.ToInt32(txtInput.Text);
             //the upperbound would be a number that has all prime factors, up to inputNumber / 2
-            int[] primeArray = primeArrayConstructor(inputNumber);
+            int[] primeArray = primeArrayConstructor((inputNumber / 2) + 1);
             int testnumber = inputNumber * 2;
             bool solutionFound = false;
             while (solutionFound == false)
