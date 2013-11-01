@@ -29,46 +29,34 @@ namespace PrjEuler12
             //maybe use 2000 = 2^4*5^3 so number of divisors will be (4+1)(3+1) = 20 !!THIS WILL WORK, AND BE MUCH FASTER THAN THE CURRENT METHOD!!
             int inputNumber = Convert.ToInt32(txtInput.Text);
             //the upperbound would be a number that has all prime factors, up to inputNumber / 2
-            int[] primeArray = primeArrayConstructor(inputNumber / 2);
+            int[] primeArray = primeArrayConstructor(inputNumber);
             int testnumber = inputNumber * 2;
             bool solutionFound = false;
             while (solutionFound == false)
             {
                 List<int> testNumberDecomp = new List<int>(primeDecomposition(testnumber, primeArray));
-                int totalNumberOfFactors = 1, powerNumber = 0, i = 0, run = 1;
+                int totalNumberOfFactors = 1, run = 1;
                 List<int> factorPowers = new List<int>();
-                while (i < testNumberDecomp.Count)
+                for (int i = 1; i < testNumberDecomp.Count; i++)
                 {
-                    if (i + run < testNumberDecomp.Count - 1)
+                    if (testNumberDecomp[i] == testNumberDecomp[i - 1])
                     {
-                        if (testNumberDecomp[i] == testNumberDecomp[i + run])
-                            run++;
-                        else
-                        {
-                            i += run;
-                            factorPowers.Add(run);
-                            powerNumber++;
-                            run = 1;
-                        }
+                        run++;
                     }
                     else
                     {
-                        //last input
-                        run++;
                         factorPowers.Add(run);
-                        break; 
+                        run = 1;
                     }
                 }
+                //add final factor power
+                factorPowers.Add(run);
                 for (int j = 0; j < factorPowers.Count; j++)
                 {
-                    if (factorPowers[j] != 0)
-                    {
                         factorPowers[j]++;
                         totalNumberOfFactors *= factorPowers[j];
-                    }
                 }
-                totalNumberOfFactors += 2;
-                if (totalNumberOfFactors >= inputNumber)
+                if (totalNumberOfFactors == inputNumber)
                 {
                     lblAnswer.Text = testnumber.ToString();
                     solutionFound = true;
@@ -110,12 +98,16 @@ namespace PrjEuler12
         public static List<int> primeDecomposition(int inputNumber, int[] primeArray)
         {
             List<int> primeDecomp = new List<int>();
-            for(int i = 0; i < primeArray.Length; i++)
+            for (int i = 0; i < primeArray.Length; i++)
+            {
+                if (inputNumber == 1)
+                    break;
                 while (inputNumber % primeArray[i] == 0)
                 {
                     primeDecomp.Add(primeArray[i]);
                     inputNumber /= primeArray[i];
                 }
+            }
             return primeDecomp;
         }
 
