@@ -20,14 +20,17 @@ namespace PrjEuler14
             {
                 if(visitedNumbers[i].visited != true)
                 {
+                    //number hasn't been checked before
                     long testNumber = i;
                     int numberOfIterations = 0;
+                    //main collatz algorithm
                     while(testNumber != 1)
                     {
                         if (testNumber % 2 == 0)
                             testNumber = testNumber / 2;
                         else
                             testNumber = (testNumber * 3) + 1;
+                        //check if it's already cached
                         if(testNumber < 1000000)
                             if (visitedNumbers[testNumber].visited == true)
                             {
@@ -38,12 +41,14 @@ namespace PrjEuler14
                         numberOfIterations++;
 
                     }
+                    //if it hasn't been cached, do so now
                     if (visitedNumbers[i].visited != true)
                     {
                         visitedNumbers[i].visited = true;
                         visitedNumbers[i].iterations = numberOfIterations;
                     }
                 }
+                //check if it's the largest chain
                 if (visitedNumbers[i].iterations > mostIterations)
                 {
                     mostIterations = visitedNumbers[i].iterations;

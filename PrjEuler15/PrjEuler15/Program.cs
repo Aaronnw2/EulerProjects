@@ -15,12 +15,14 @@ namespace PrjEuler15
             BigInteger nFact = 1, twoNFact = 1;
             Console.WriteLine("Input n for paths of an NxN grid");
             int input = Convert.ToInt32(Console.ReadLine());
+            //compute the values of n! and 2n!
             for (int i = 1; i <= 2 * input; i++)
             {
                 if (i <= input)
                     nFact *= i;
                 twoNFact *= i;
             }
+            //using definition of the choose function to find the answer
             BigInteger answer = twoNFact / (nFact * nFact);
             Console.WriteLine("Paths for a {1}x{1} grid: {0}", answer, input);
         }
