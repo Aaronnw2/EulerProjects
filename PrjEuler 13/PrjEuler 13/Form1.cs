@@ -20,6 +20,7 @@ namespace PrjEuler_13
         {
             string textInput = txtInput.Text;
             int[][] input = new int[100][];
+            //input in all 100 digits
             for (int i = 0; i < 100; i++)
             {
                 input[i] = new int[50];
@@ -31,20 +32,33 @@ namespace PrjEuler_13
                 }
             }
             int runningTotal = 0, carryAmount = 0, lastDigit = 0;
-            int[] answer = new int[200];
+            int[] answer = new int[51];
+            //loop to add the digits of the numbers
             for (int i = 0; i < 50; i++)
             {
                 runningTotal = carryAmount;
                 carryAmount = 0;
+                //loop to add all 100 of the ith digits together
                 for (int j = 0; j < 100; j++)
                 {
-                    runningTotal += input[100 - j - 1][50 - i - 1];
+                    runningTotal += input[j][49 - i];
                 }
+                //get the last digit of the sum for the answer
                 lastDigit = runningTotal % 10;
-                carryAmount = runningTotal - lastDigit / 10;
-                answer[200 - i - 1] = lastDigit;
+                //find the carry amount left over after putting the answer for this digit
+                carryAmount = (runningTotal - lastDigit) / 10;
+                answer[51 - i - 1] = lastDigit;
             }
+            //add the last carry amount to the begining of the number
             answer[0] = carryAmount;
+            //put the answer in string form
+            string output = "";
+            for (int i = 0; i < 51; i++)
+            {
+                output = output + answer[i].ToString();
+            }
+            lbAnswer.Text = output;
+
         }
     }
 }
