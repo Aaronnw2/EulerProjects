@@ -1,0 +1,5 @@
+C:\Users\Aaron\Desktop\Programs\Project Euler Problems 1-50\PrjEuler17\PrjEuler17\bin\Debug\PrjEuler17.exe
+C:\Users\Aaron\Desktop\Programs\Project Euler Problems 1-50\PrjEuler17\PrjEuler17\bin\Debug\PrjEuler17.pdb
+C:\Users\Aaron\Desktop\Programs\Project Euler Problems 1-50\PrjEuler17\PrjEuler17\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Aaron\Desktop\Programs\Project Euler Problems 1-50\PrjEuler17\PrjEuler17\obj\x86\Debug\PrjEuler17.exe
+C:\Users\Aaron\Desktop\Programs\Project Euler Problems 1-50\PrjEuler17\PrjEuler17\obj\x86\Debug\PrjEuler17.pdb
