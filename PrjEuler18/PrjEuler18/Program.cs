@@ -31,13 +31,56 @@ namespace PrjEuler18
         }
 
         //true means straight is highest, false means the right triangle is higher
-        static bool triangleSumFinder(int[][] inputTriangle)
+        static int[] triangleSumFinder(int[][] inputTriangle)
         {
-            if (inputTriangle.Length > 1)
+            if (inputTriangle.Length > 2)
             {
+                //make sub-triangles
+                int[][] subTriangleDown = new int[inputTriangle.Length - 1][];
+                for (int i = 0; i < inputTriangle.Length - 1; i++)
+                {
+                    for (int j = 0; j <= i; j++)
+                    {
+                        subTriangleDown[i][j] = inputTriangle[i + 1][j];
+                    }
+                }
+                int[][] subTriangleRight = new int[inputTriangle.Length - 1][];
+                for (int i = 0; i < inputTriangle.Length - 1; i++)
+                {
+                    for(int j = 0; j <= i; j++)
+                    {
+                        subTriangleRight[i][j] = inputTriangle[i + 1][j + 1];
+                    }
+                }
+                int[] rightSum = new int[inputTriangle.Length - 1];
+                rightSum = triangleSumFinder(subTriangleRight);
+                int[] downSum = new int[inputTriangle.Length - 1];
+                downSum = triangleSumFinder(subTriangleDown);
+                int rightTotal = 0, downTotal = 0;
+                foreach (int n in rightSum)
+                    rightTotal += n;
+                foreach (int n in downSum)
+                    downTotal += n;
+                if (rightTotal > downTotal)
+                {
 
+                }
             }
-            return true;
+            else
+            {
+                int[] returnValue = new int[1];
+                if (inputTriangle[1][0] > inputTriangle[1][1])
+                {
+                    returnValue[0] = inputTriangle[1][0];
+                    return returnValue;
+                }
+                else
+                {
+                    returnValue[0] = inputTriangle[1][1];
+                    return returnValue;
+                }
+                
+            }
         }
     }
 }
