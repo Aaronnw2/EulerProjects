@@ -27,7 +27,16 @@ namespace PrjEuler18
                     inputArray[i][j] = Convert.ToInt32(currentLine.Substring(j * 3, 2));
                 }
             }
-            triangleSumFinder(inputArray);
+            int[] answer = triangleSumFinder(inputArray);
+            string output = "";
+            int sum = 0;
+            foreach (int n in answer)
+            {
+                output = output + " " + n;
+                sum += n;
+            }
+            Console.WriteLine(output);
+            Console.WriteLine(sum);
         }
 
         //true means straight is highest, false means the right triangle is higher
@@ -66,19 +75,19 @@ namespace PrjEuler18
                 int[] returnArray = new int[inputTriangle.Length];
                 if (downSum > rightSum)
                 {
-                    for (int i = 0; i < inputTriangle.Length - 2; i++)
+                    for (int i = 0; i < downArray.Length; i++)
                     {
                         returnArray[i] = downArray[i];
-                        returnArray[inputTriangle.Length] = subTriangleDown[0][0];
                     }
+                    returnArray[inputTriangle.Length - 1] = subTriangleDown[0][0];
                 }
                 else
                 {
-                    for (int i = 0; i < inputTriangle.Length - 1; i++)
+                    for (int i = 0; i < rightArray.Length; i++)
                     {
                         returnArray[i] = rightArray[i];
-                        returnArray[inputTriangle.Length] = subTriangleRight[0][0];
                     }
+                    returnArray[inputTriangle.Length - 1] = subTriangleRight[0][0];
                 }
                 return returnArray;
             }
