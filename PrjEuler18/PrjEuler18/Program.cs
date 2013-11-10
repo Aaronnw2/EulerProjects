@@ -37,6 +37,8 @@ namespace PrjEuler18
             {
                 //make sub-triangles
                 int[][] subTriangleDown = new int[inputTriangle.Length - 1][];
+                for(int i = 0; i < inputTriangle.Length - 1; i++)
+                    subTriangleDown[i] = new int[i + 1];
                 for (int i = 0; i < inputTriangle.Length - 1; i++)
                 {
                     for (int j = 0; j <= i; j++)
@@ -46,25 +48,39 @@ namespace PrjEuler18
                 }
                 int[][] subTriangleRight = new int[inputTriangle.Length - 1][];
                 for (int i = 0; i < inputTriangle.Length - 1; i++)
+                    subTriangleRight[i] = new int[i + 1];
+                for (int i = 0; i < inputTriangle.Length - 1; i++)
                 {
                     for(int j = 0; j <= i; j++)
                     {
                         subTriangleRight[i][j] = inputTriangle[i + 1][j + 1];
                     }
                 }
-                int[] rightSum = new int[inputTriangle.Length - 1];
-                rightSum = triangleSumFinder(subTriangleRight);
-                int[] downSum = new int[inputTriangle.Length - 1];
-                downSum = triangleSumFinder(subTriangleDown);
-                int rightTotal = 0, downTotal = 0;
-                foreach (int n in rightSum)
-                    rightTotal += n;
-                foreach (int n in downSum)
-                    downTotal += n;
-                if (rightTotal > downTotal)
+                int[] downArray = triangleSumFinder(subTriangleDown);
+                int[] rightArray = triangleSumFinder(subTriangleRight);
+                int downSum = 0, rightSum = 0;
+                foreach (int n in downArray)
+                    downSum += n;
+                foreach (int n in rightArray)
+                    rightSum += n;
+                int[] returnArray = new int[inputTriangle.Length];
+                if (downSum > rightSum)
                 {
-
+                    for (int i = 0; i < inputTriangle.Length - 2; i++)
+                    {
+                        returnArray[i] = downArray[i];
+                        returnArray[inputTriangle.Length] = subTriangleDown[0][0];
+                    }
                 }
+                else
+                {
+                    for (int i = 0; i < inputTriangle.Length - 1; i++)
+                    {
+                        returnArray[i] = rightArray[i];
+                        returnArray[inputTriangle.Length] = subTriangleRight[0][0];
+                    }
+                }
+                return returnArray;
             }
             else
             {
