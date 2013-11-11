@@ -1,0 +1,5 @@
+C:\Users\Aaron\Desktop\Programs\Project Euler Problems 1-50\prjEuler20\prjEuler20\bin\Debug\prjEuler20.exe
+C:\Users\Aaron\Desktop\Programs\Project Euler Problems 1-50\prjEuler20\prjEuler20\bin\Debug\prjEuler20.pdb
+C:\Users\Aaron\Desktop\Programs\Project Euler Problems 1-50\prjEuler20\prjEuler20\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Aaron\Desktop\Programs\Project Euler Problems 1-50\prjEuler20\prjEuler20\obj\x86\Debug\prjEuler20.exe
+C:\Users\Aaron\Desktop\Programs\Project Euler Problems 1-50\prjEuler20\prjEuler20\obj\x86\Debug\prjEuler20.pdb
