@@ -27,85 +27,25 @@ namespace PrjEuler18
                     inputArray[i][j] = Convert.ToInt32(currentLine.Substring(j * 3, 2));
                 }
             }
-            int[] answer = triangleSumFinder(inputArray);
-            string output = "";
-            int sum = 0;
-            foreach (int n in answer)
+            for (int i = inputArray.Length - 2; i >= 0; i--)
             {
-                output = output + " " + n;
-                sum += n;
+                for (int j = 0; j <= i; j++)
+                {
+                    if (inputArray[i + 1][j] > inputArray[i + 1][j + 1])
+                        inputArray[i][j] += inputArray[i + 1][j];
+                    else
+                        inputArray[i][j] += inputArray[i + 1][j + 1];
+                }
+                //debug output
+                Console.WriteLine("\nIteration " + (14 - i));
+                for (int k = 0; k < inputArray.Length; k++)
+                {
+                    for (int m = 0; m <= k; m++)
+                        Console.Write(inputArray[k][m] + " ");
+                    Console.Write("\n");
+                }
             }
-            Console.WriteLine(output);
-            Console.WriteLine(sum);
-        }
-
-        //true means straight is highest, false means the right triangle is higher
-        static int[] triangleSumFinder(int[][] inputTriangle)
-        {
-            if (inputTriangle.Length > 2)
-            {
-                //make sub-triangles
-                int[][] subTriangleDown = new int[inputTriangle.Length - 1][];
-                for(int i = 0; i < inputTriangle.Length - 1; i++)
-                    subTriangleDown[i] = new int[i + 1];
-                for (int i = 0; i < inputTriangle.Length - 1; i++)
-                {
-                    for (int j = 0; j <= i; j++)
-                    {
-                        subTriangleDown[i][j] = inputTriangle[i + 1][j];
-                    }
-                }
-                int[][] subTriangleRight = new int[inputTriangle.Length - 1][];
-                for (int i = 0; i < inputTriangle.Length - 1; i++)
-                    subTriangleRight[i] = new int[i + 1];
-                for (int i = 0; i < inputTriangle.Length - 1; i++)
-                {
-                    for(int j = 0; j <= i; j++)
-                    {
-                        subTriangleRight[i][j] = inputTriangle[i + 1][j + 1];
-                    }
-                }
-                int[] downArray = triangleSumFinder(subTriangleDown);
-                int[] rightArray = triangleSumFinder(subTriangleRight);
-                int downSum = 0, rightSum = 0;
-                foreach (int n in downArray)
-                    downSum += n;
-                foreach (int n in rightArray)
-                    rightSum += n;
-                int[] returnArray = new int[inputTriangle.Length];
-                if (downSum > rightSum)
-                {
-                    for (int i = 0; i < downArray.Length; i++)
-                    {
-                        returnArray[i] = downArray[i];
-                    }
-                    returnArray[inputTriangle.Length - 1] = subTriangleDown[0][0];
-                }
-                else
-                {
-                    for (int i = 0; i < rightArray.Length; i++)
-                    {
-                        returnArray[i] = rightArray[i];
-                    }
-                    returnArray[inputTriangle.Length - 1] = subTriangleRight[0][0];
-                }
-                return returnArray;
-            }
-            else
-            {
-                int[] returnValue = new int[1];
-                if (inputTriangle[1][0] > inputTriangle[1][1])
-                {
-                    returnValue[0] = inputTriangle[1][0];
-                    return returnValue;
-                }
-                else
-                {
-                    returnValue[0] = inputTriangle[1][1];
-                    return returnValue;
-                }
-                
-            }
+            Console.WriteLine("highest sum: " + inputArray[0][0]);
         }
     }
 }
