@@ -7,9 +7,10 @@ namespace PrjEuler19
 {
     class Program
     {
+        //misses feb 1st 1998
         static void Main(string[] args)
         {
-            int date = 1, dayOfTheWeek = 1, sundayTheFirsts = 0;
+            int date = 1, dayOfTheWeek = 1, sundayTheFirsts = 0, leapYears = 0;
             for (int year = 1900; year < 2001; year++)
             {
                 for (int month = 1; month < 13; month++)
@@ -26,6 +27,11 @@ namespace PrjEuler19
                         case 12:
                             for (int k = 1; k < 32; k++)
                             {
+                                if (date == 1 && dayOfTheWeek == 1 && year > 1900)
+                                {
+                                    sundayTheFirsts++;
+                                    Console.WriteLine("Day: {0} Month: {1} Year: {2} Day of the week: {3}\n", date, month, year, dayOfTheWeek);
+                                }
                                 if (dayOfTheWeek == 7)
                                 {
                                     dayOfTheWeek = 1;
@@ -34,8 +40,6 @@ namespace PrjEuler19
                                 {
                                     dayOfTheWeek++;
                                 }
-                                if (date == 1 && dayOfTheWeek == 1 && year > 1900)
-                                    sundayTheFirsts++;
                                 date++;
                             }
                             break;
@@ -45,6 +49,11 @@ namespace PrjEuler19
                         case 11:
                             for (int k = 1; k < 31; k++)
                             {
+                                if (date == 1 && dayOfTheWeek == 1 && year > 1900)
+                                {
+                                    sundayTheFirsts++;
+                                    Console.WriteLine("Day: {0} Month: {1} Year: {2} Day of the week: {3}\n", date, month, year, dayOfTheWeek);
+                                }
                                 if (dayOfTheWeek == 7)
                                 {
                                     dayOfTheWeek = 1;
@@ -54,18 +63,24 @@ namespace PrjEuler19
                                     dayOfTheWeek++;
                                 }
                                 date++;
-                                if (date == 1 && dayOfTheWeek == 1 && year > 1900)
-                                    sundayTheFirsts++;
                             }
                             break;
                         case 2:
                             int daysInFeb;
-                            if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
+                            if (year % 4 == 0)
+                            {
+                                leapYears++;
                                 daysInFeb = 29;
+                            }
                             else
                                 daysInFeb = 28;
                             for (int k = 1; k <= daysInFeb; k++)
                             {
+                                if (date == 1 && dayOfTheWeek == 1 && year > 1900)
+                                {
+                                    sundayTheFirsts++;
+                                    Console.WriteLine("Day: {0} Month: {1} Year: {2} Day of the week: {3}\n", date, month, year, dayOfTheWeek);
+                                }
                                 if (dayOfTheWeek == 7)
                                 {
                                     dayOfTheWeek = 1;
@@ -75,14 +90,12 @@ namespace PrjEuler19
                                     dayOfTheWeek++;
                                 }
                                 date++;
-                                if (date == 1 && dayOfTheWeek == 1 && year > 1900)
-                                    sundayTheFirsts++;
                             }
                             break;
                     }
                 }
             }
-            Console.WriteLine(sundayTheFirsts);
+            Console.WriteLine(sundayTheFirsts + " Leap years: " + leapYears);
         }
     }
 }
