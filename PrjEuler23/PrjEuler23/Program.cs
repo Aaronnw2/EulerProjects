@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 
 namespace PrjEuler23
 {
@@ -10,10 +11,11 @@ namespace PrjEuler23
         static void Main(string[] args)
         {
             //abundant => sum of its divisors is greater than the number itself
-            //compile a list of abundant numbers, perhaps with an upper bound of 28123
+            //compile a list of abundant numbers, perhaps with an upper bound of 28123 - 12
             List<int> abundantNumbers = new List<int>();
+            Stopwatch timer = Stopwatch.StartNew();
             //find abundant numbers. some better bounds would help speed this up
-            for (int i = 12; i < 28123; i++)
+            for (int i = 12; i < 28111; i++)
             {
                 int sumOfFactors = 0;
                 foreach(int n in findFactors(i))
@@ -32,7 +34,8 @@ namespace PrjEuler23
             for(int i = 0; i < 28123; i++)
                 if(areSums[i] == false)
                     runningSum += i;
-            Console.WriteLine(runningSum);
+            timer.Stop();
+            Console.WriteLine(runningSum + "\nSolution took {0} ms", timer.ElapsedMilliseconds);
         }
 
         public static int[] findFactors(int inputNumber)
