@@ -9,6 +9,7 @@ namespace PrjEuler21
     {
         static void Main(string[] args)
         {
+            //this is brute force, look into Thabit ibn Qurra theorem for a faster way
             int[] divisorSumArray = new int[10001];
             bool[] isAmicable = new bool[10000];
             //find the sum of divisors for all numbers under 10000
