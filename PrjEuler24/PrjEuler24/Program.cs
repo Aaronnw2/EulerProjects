@@ -17,10 +17,51 @@ namespace PrjEuler24
             //that will take us to the 725760th lexicographic permutation
             //then we repaetedly subtract 8! to get the second digit of 7 at 1008000
             //maybe use a while loop, find each digit in turn, using how many permutations S_n would use for that specific digit
+            bool[] usedDigit = new bool[10];
             int[] digits = new int[10];
-            digits[9] = 2;
-            digits[8] = 7;
-            int permutationNumber = 1008000;
+            int startNumber = 0, digitCounter = 0, digitToAdd = 0;
+            while (startNumber < 1000000)
+            {
+                //add digitcounter! to the number of permutations
+                startNumber = startNumber + (fact(9 - digitCounter));
+                //check if the total permutations is over 1 million
+                if (startNumber >= 1000000)
+                {
+                    //the next digit has been found
+                    digits[digitCounter] = digitToAdd;
+                    //mark it as used
+                    usedDigit[digitToAdd] = true;
+                    //rool back one factorial so we are back under 1 million
+                    startNumber = startNumber - fact(9 - digitCounter);
+                    //start looking for the next digit
+                    digitCounter++;
+                    digitToAdd = -1;
+                    //if we found the last digit, exit
+                    if (digitCounter == 10)
+                        break;
+                }
+                //find the next unused number
+                do
+                {
+                    //set the number to add as the next smallest    
+                    digitToAdd++;
+                } while (usedDigit[digitToAdd] == true);
+            }
+            //print out the number
+            for(int i = 0; i < 10; i++)
+                Console.Write(digits[i]);
+            Console.Write("\n");
+        }
+
+        //takes an int input and outputs input!
+        public static int fact(int input)
+        {
+            int answer = 1;
+            for (int i = input; i > 1; i--)
+            {
+                answer *= i;
+            }
+            return answer;
         }
     }
 }
