@@ -10,7 +10,7 @@ namespace PrjEuler26
         static void Main(string[] args)
         {
             //a number 1/p where p is prime
-            //multiplicitive order 10 mod p
+            //multiplicitive order 10 mod p where p has all factors of 2 and 5 taken out
             int[] multiplicativeOrder = new int[1000];
             for (int i = 1; i <= 1000; i++)
             {
