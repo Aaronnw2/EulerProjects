@@ -14,9 +14,14 @@ namespace PrjEuler26
             int[] multiplicativeOrder = new int[1000];
             for (int i = 1; i <= 1000; i++)
             {
+                int reducedNumber = i;
+                while (reducedNumber % 2 == 0)
+                    reducedNumber = reducedNumber / 2;
+                while (reducedNumber % 5 == 0)
+                    reducedNumber = reducedNumber / 5;
                 for (int power = 1; power <= 1000; power++)
                 {
-                    if (Math.Pow(10, power) % i == 1)
+                    if (Math.Pow(10, power) % reducedNumber == 1)
                     {
                         multiplicativeOrder[i] = power;
                         break;
